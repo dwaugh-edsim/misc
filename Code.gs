@@ -262,13 +262,30 @@ function doPost(e) {
       
     } else if (action === "suggest") {
       const title = postData.title;
-      const artist = postData.artist || "Suggested";
-      const year = postData.year || 1986;
-      const comment = postData.comment || "";
+      let artist = "Suggested";
+      let year = 1986;
       const userId = String(postData.userId || "");
       
       if (!title) {
         return jsonResponse({ status: "error", message: "Title is required." });
+      }
+
+      // Magical metadata lookup via iTunes Search API
+      try {
+        const lookupUrl = "https://itunes.apple.com/search?term=" + encodeURIComponent(title) + "&media=music&limit=1";
+        const response = UrlFetchApp.fetch(lookupUrl, { muteHttpExceptions: true });
+        if (response.getResponseCode() === 200) {
+          const data = JSON.parse(response.getContentText());
+          if (data.results && data.results.length > 0) {
+            const track = data.results[0];
+            artist = track.artistName || artist;
+            if (track.releaseDate) {
+              year = new Date(track.releaseDate).getFullYear() || year;
+            }
+          }
+        }
+      } catch (lookupErr) {
+        // Fallback to defaults silently
       }
       
       const lock = LockService.getScriptLock();
