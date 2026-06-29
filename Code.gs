@@ -262,18 +262,40 @@ function doPost(e) {
       
     } else if (action === "suggest") {
       const title = postData.title;
-      const artist = postData.artist;
-      const year = postData.year;
-      const comment = postData.comment;
+      const artist = postData.artist || "Suggested";
+      const year = postData.year || 1986;
+      const comment = postData.comment || "";
+      const userId = String(postData.userId || "");
       
       if (!title) {
         return jsonResponse({ status: "error", message: "Title is required." });
       }
       
-      const sheet = ss.getSheetByName("Suggestions");
-      sheet.appendRow([new Date(), title, artist, year, comment]);
+      const lock = LockService.getScriptLock();
+      lock.waitLock(10000);
       
-      return jsonResponse({ status: "success", message: "Suggestion added successfully!" });
+      try {
+        const playlistSheet = ss.getSheetByName("MasterPlaylist");
+        const lastRow = playlistSheet.getLastRow();
+        let nextId = "1";
+        if (lastRow > 1) {
+          const lastIdValue = playlistSheet.getRange(lastRow, 1).getValue();
+          nextId = String(Number(lastIdValue) + 1);
+        }
+        
+        // Append directly to MasterPlaylist (1 initial vote)
+        playlistSheet.appendRow([nextId, title, artist, year, "Suggested by guest.", 1]);
+        
+        // If userId is provided, log the vote automatically in VoteLog
+        if (userId) {
+          const voteLogSheet = ss.getSheetByName("VoteLog");
+          voteLogSheet.appendRow([userId, nextId, "up"]);
+        }
+        
+        return jsonResponse({ status: "success", message: "Suggestion added directly to playlist!" });
+      } finally {
+        lock.releaseLock();
+      }
     }
     
     return jsonResponse({ status: "error", message: "Invalid action." });

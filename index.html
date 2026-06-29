@@ -703,6 +703,13 @@
       else overlay.classList.remove("show");
     }
 
+    // Unique user ID to sync votes with VoteLog database
+    let userId = localStorage.getItem("userId");
+    if (!userId) {
+      userId = "user_" + Math.random().toString(36).substring(2, 11);
+      localStorage.setItem("userId", userId);
+    }
+
     // Fetch playlist and collage from Apps Script
     function fetchPlaylist() {
       if (!APPS_SCRIPT_URL) {
@@ -712,12 +719,16 @@
       }
 
       toggleLoading(true);
-      fetch(APPS_SCRIPT_URL)
+      fetch(APPS_SCRIPT_URL + "?userId=" + userId)
         .then(response => response.json())
         .then(data => {
           if (data.status === "success") {
             if (data.playlist) playlist = data.playlist;
             if (data.images) collageImages = data.images;
+            if (data.userVotes) {
+              votesMap = data.userVotes;
+              localStorage.setItem("votesMap", JSON.stringify(votesMap));
+            }
             sortAndRender();
             renderCollage(collageImages);
           } else {
@@ -882,7 +893,8 @@
         body: JSON.stringify({
           action: "vote",
           id: songId,
-          type: finalType
+          type: finalType,
+          userId: userId
         })
       })
       .then(() => {
@@ -908,9 +920,10 @@
       const suggestionPayload = {
         action: "suggest",
         title: title,
-        artist: "",
-        year: null,
-        comment: ""
+        artist: "Suggested",
+        year: 1986,
+        comment: "",
+        userId: userId
       };
 
       if (!APPS_SCRIPT_URL) {
@@ -918,7 +931,7 @@
         playlist.push({
           id: newId,
           title: title,
-          artist: "Suggested track",
+          artist: "Suggested",
           year: 1986,
           description: "Suggested by guest.",
           votes: 1
@@ -942,7 +955,9 @@
       })
       .then(() => {
         document.getElementById("suggestionForm").reset();
-        showToast("Suggestion sent to organizers!", "success", "fa-paper-plane");
+        showToast("Suggestion added directly to playlist!", "success", "fa-paper-plane");
+        // Refetch the playlist from Apps Script so the new song immediately appears on page
+        setTimeout(fetchPlaylist, 1000);
       })
       .catch(err => {
         console.error("Suggestion Error:", err);
