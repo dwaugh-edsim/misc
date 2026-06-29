@@ -764,7 +764,6 @@
               <span class="song-year">${song.year}</span>
             </div>
             <div class="song-artist">by ${song.artist}</div>
-            <div class="song-desc">${song.description || ""}</div>
           </div>
           <div class="vote-panel">
             <button class="vote-btn up-btn ${userVote === 'up' ? 'voted' : ''}" onclick="castVote('${song.id}', 'up')" aria-label="Upvote">
