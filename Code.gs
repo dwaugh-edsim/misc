@@ -81,7 +81,7 @@ function setupDatabase() {
       ["25", "Wake Me Up Before You Go-Go", "Wham!", 1984, "An incredibly energetic, upbeat pop anthem with a vibrant retro soul vibe.", 0],
       ["26", "Gloria", "Laura Branigan", 1982, "A driving, high-tempo pop-rock epic with soaring vocals and incredible drive.", 0],
       ["27", "We Got the Beat", "The Go-Go's", 1981, "Fast-paced, energetic punk-pop anthem that is a staple of early 80s party playlists.", 0],
-      ["28", "Funky Cold Medina", "Tone Lōc", 1989, "Classic party rap with a heavy rock sample and humorous lyrics.", 0],
+
       ["29", "Mickey", "Toni Basil", 1981, "The ultimate cheerleading-style high-energy pop chant that is impossible to ignore.", 0],
       ["30", "Rumors", "Timex Social Club", 1986, "A seminal mid-80s R&B/freestyle dance track with a very catchy rhythm.", 0],
       ["31", "Express Yourself", "Madonna", 1989, "A powerful, energetic dance-pop track with a strong message and a great brass-driven groove.", 0],
