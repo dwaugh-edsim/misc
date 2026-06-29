@@ -179,8 +179,8 @@ function doPost(e) {
       const year = postData.year;
       const comment = postData.comment;
       
-      if (!title || !artist) {
-        return jsonResponse({ status: "error", message: "Title and Artist are required." });
+      if (!title) {
+        return jsonResponse({ status: "error", message: "Title is required." });
       }
       
       const sheet = ss.getSheetByName("Suggestions");

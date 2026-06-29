@@ -622,21 +622,9 @@
       
       <form id="suggestionForm" onsubmit="submitSuggestion(event)">
         <div class="form-grid">
-          <div class="form-group">
+          <div class="form-group full-width">
             <label for="suggestTitle">Song Title *</label>
             <input type="text" id="suggestTitle" required placeholder="e.g. Blue Monday">
-          </div>
-          <div class="form-group">
-            <label for="suggestArtist">Artist *</label>
-            <input type="text" id="suggestArtist" required placeholder="e.g. New Order">
-          </div>
-          <div class="form-group">
-            <label for="suggestYear">Release Year</label>
-            <input type="number" id="suggestYear" min="1980" max="1999" placeholder="e.g. 1983">
-          </div>
-          <div class="form-group">
-            <label for="suggestComment">Why does this belong on the playlist?</label>
-            <input type="text" id="suggestComment" placeholder="e.g. Best synth bassline ever!">
           </div>
         </div>
         <button type="submit" class="btn-submit">
@@ -917,21 +905,18 @@
       event.preventDefault();
       
       const title = document.getElementById("suggestTitle").value.trim();
-      const artist = document.getElementById("suggestArtist").value.trim();
-      const year = document.getElementById("suggestYear").value;
-      const comment = document.getElementById("suggestComment").value.trim();
       
-      if (!title || !artist) {
-        showToast("Title and Artist are required!", "error", "fa-triangle-exclamation");
+      if (!title) {
+        showToast("Title is required!", "error", "fa-triangle-exclamation");
         return;
       }
       
       const suggestionPayload = {
         action: "suggest",
         title: title,
-        artist: artist,
-        year: year ? parseInt(year) : null,
-        comment: comment
+        artist: "",
+        year: null,
+        comment: ""
       };
 
       if (!APPS_SCRIPT_URL) {
@@ -939,9 +924,9 @@
         playlist.push({
           id: newId,
           title: title,
-          artist: artist,
-          year: year ? parseInt(year) : 1986,
-          description: comment || "Suggested by guest.",
+          artist: "Suggested track",
+          year: 1986,
+          description: "Suggested by guest.",
           votes: 1
         });
         votesMap[newId] = "up";
