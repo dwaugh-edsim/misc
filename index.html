@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Class of '86 Reunion Playlist Curation</title>
+  <title>Classes of '86, '87, '88 Reunion Playlist Curation</title>
   
   <!-- Premium Fonts (Righteous for 80s logo look, Orbitron for tech/synth look, Outfit for copy) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +66,7 @@
       padding: 2rem 1.5rem;
     }
 
-    /* Hero Banner Header Section */
+    /* Hero Banner with 80s artwork */
     .hero-banner {
       width: 100%;
       height: 240px;
@@ -149,71 +149,6 @@
       font-size: 1.05rem;
       text-align: center;
       box-shadow: inset 0 0 15px rgba(139, 92, 246, 0.1);
-    }
-
-    /* Webhook Config Card (Collapsible) */
-    .config-card {
-      background: rgba(18, 11, 38, 0.85);
-      border: 1px dashed var(--accent-blue);
-      border-radius: 16px;
-      padding: 1.25rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
-    }
-
-    .config-card h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
-      color: var(--accent-blue);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .config-input-group {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: 0.75rem;
-    }
-
-    .config-input-group input {
-      flex: 1;
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 0.6rem 1rem;
-      color: #fff;
-      font-family: monospace;
-      font-size: 0.85rem;
-      transition: all 0.3s ease;
-    }
-
-    .config-input-group input:focus {
-      outline: none;
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-    }
-
-    .btn-save {
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-      border: none;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 700;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.8rem;
-      transition: all 0.2s ease;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-    }
-
-    .btn-save:hover {
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
-      transform: translateY(-1px);
     }
 
     /* Toolbar: Search, Filter, Stats */
@@ -607,7 +542,7 @@
     <!-- Hero Banner with 80s artwork -->
     <div class="hero-banner">
       <div class="hero-text">
-        <div class="badge">Class of '86</div>
+        <div class="badge">Classes of '86, '87, '88</div>
         <h1>40th Reunion Playlist</h1>
         <div class="sub-lead">Interactive Curation System</div>
       </div>
@@ -615,16 +550,6 @@
 
     <div class="lead-description">
       Help curate the music to keep the dance floor alive between band sets. Upvote your favorite tracks or suggest a brand new banger!
-    </div>
-
-    <!-- Webapp URL configuration setting -->
-    <div class="config-card" id="configCard">
-      <h3><i class="fa-solid fa-gears"></i> Google Apps Script Webhook Configuration</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted);">Insert your deployed Apps Script URL below to sync votes and suggestions with your Google Sheet. Leave it blank to test with local database.</p>
-      <div class="config-input-group">
-        <input type="text" id="scriptUrlInput" placeholder="https://script.google.com/macros/s/.../exec">
-        <button class="btn-save" onclick="saveWebhookUrl()">Save URL</button>
-      </div>
     </div>
 
     <!-- Search & Toolbar -->
@@ -681,8 +606,8 @@
   </div>
 
   <script>
-    // Configurable Google Apps Script Web App Endpoint URL
-    let APPS_SCRIPT_URL = localStorage.getItem("APPS_SCRIPT_URL") || "";
+    // Hardcoded Google Apps Script Web App Endpoint URL
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzm1U5F9W50BleZirSm2iHjKBmkgXywdByneFiSsehjP1TnM4AB8S3W5UOo0GvB4KaAfA/exec";
 
     // Default local fallback playlist
     let playlist = [
@@ -735,20 +660,8 @@
     let votesMap = JSON.parse(localStorage.getItem("votesMap")) || {};
 
     window.onload = function() {
-      // Set input value if exists in local storage
-      if (APPS_SCRIPT_URL) {
-        document.getElementById("scriptUrlInput").value = APPS_SCRIPT_URL;
-      }
       fetchPlaylist();
     };
-
-    function saveWebhookUrl() {
-      const url = document.getElementById("scriptUrlInput").value.trim();
-      APPS_SCRIPT_URL = url;
-      localStorage.setItem("APPS_SCRIPT_URL", url);
-      showToast("Webhook URL Saved!", "success", "fa-check");
-      fetchPlaylist();
-    }
 
     function toggleLoading(show) {
       const overlay = document.getElementById("loadingOverlay");
@@ -756,10 +669,9 @@
       else overlay.classList.remove("show");
     }
 
-    // Fetch playlist from Apps Script (or fallback to local array)
+    // Fetch playlist from Apps Script
     function fetchPlaylist() {
       if (!APPS_SCRIPT_URL) {
-        // Fallback local sorting
         sortAndRender();
         return;
       }
