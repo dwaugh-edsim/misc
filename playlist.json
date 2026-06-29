@@ -1,354 +1,359 @@
-[
-  {
-    "id": "1",
-    "title": "I Can't Wait",
-    "artist": "Nu Shooz",
-    "year": 1986,
-    "description": "Signature synth bassline, super danceable, and still feels incredibly fresh.",
-    "votes": 0
-  },
-  {
-    "id": "2",
-    "title": "Word Up!",
-    "artist": "Cameo",
-    "year": 1986,
-    "description": "An absolute funk-rock masterpiece with massive attitude that gets everyone moving.",
-    "votes": 0
-  },
-  {
-    "id": "3",
-    "title": "Burning Down the House",
-    "artist": "Talking Heads",
-    "year": 1983,
-    "description": "Art-school funk that brings high energy without being a standard radio cliché.",
-    "votes": 0
-  },
-  {
-    "id": "4",
-    "title": "Bizarre Love Triangle",
-    "artist": "New Order",
-    "year": 1986,
-    "description": "Outstanding, emotional synth-pop dance floor filler.",
-    "votes": 0
-  },
-  {
-    "id": "5",
-    "title": "Opportunities (Let's Make Lots of Money)",
-    "artist": "Pet Shop Boys",
-    "year": 1986,
-    "description": "Uptempo and sarcastic synth-pop classic that serves as a fantastic party track.",
-    "votes": 0
-  },
-  {
-    "id": "6",
-    "title": "Our House",
-    "artist": "Madness",
-    "year": 1982,
-    "description": "Incredibly catchy, upbeat, and nostalgic ska-pop classic that always gets the crowd singing along.",
-    "votes": 0
-  },
-  {
-    "id": "7",
-    "title": "Don't You Want Me?",
-    "artist": "The Human League",
-    "year": 1981,
-    "description": "A classic synth-pop anthem with a dramatic duet structure and a heavy, infectious beat.",
-    "votes": 0
-  },
-  {
-    "id": "8",
-    "title": "Tainted Love",
-    "artist": "Soft Cell",
-    "year": 1981,
-    "description": "Minimalist yet highly energetic synth-pop masterpiece that everyone knows and sings along to.",
-    "votes": 0
-  },
-  {
-    "id": "9",
-    "title": "Super Freak",
-    "artist": "Rick James",
-    "year": 1981,
-    "description": "The ultimate high-energy funk-disco banger with one of the most famous basslines in music history.",
-    "votes": 0
-  },
-  {
-    "id": "10",
-    "title": "Celebration",
-    "artist": "Kool & The Gang",
-    "year": 1980,
-    "description": "The universal, timeless anthem for happy occasions and party dance floors.",
-    "votes": 0
-  },
-  {
-    "id": "11",
-    "title": "1999",
-    "artist": "Prince",
-    "year": 1982,
-    "description": "Apocalyptic party funk that defined the early 80s dance sound.",
-    "votes": 0
-  },
-  {
-    "id": "12",
-    "title": "Push It",
-    "artist": "Salt-N-Pepa",
-    "year": 1986,
-    "description": "A pioneering hip-hop/dance crossover with an irresistible, energetic rhythm.",
-    "votes": 0
-  },
-  {
-    "id": "13",
-    "title": "Holiday",
-    "artist": "Madonna",
-    "year": 1983,
-    "description": "A bright, sunny, and incredibly catchy dance-pop anthem that started Madonna's rise.",
-    "votes": 0
-  },
-  {
-    "id": "14",
-    "title": "Wild Thing",
-    "artist": "Tone Lōc",
-    "year": 1988,
-    "description": "Classic late-80s hip-hop track featuring the recognizable Van Halen 'Jamie's Cryin' guitar hook.",
-    "votes": 0
-  },
-  {
-    "id": "15",
-    "title": "Pump Up the Jam",
-    "artist": "Technotronic",
-    "year": 1989,
-    "description": "A high-octane hip-house anthem that bridges the late 80s dance club transition.",
-    "votes": 0
-  },
-  {
-    "id": "16",
-    "title": "Blue Monday",
-    "artist": "New Order",
-    "year": 1983,
-    "description": "The best-selling 12-inch single of all time, presenting an iconic, driving electronic beat.",
-    "votes": 0
-  },
-  {
-    "id": "17",
-    "title": "Walk Like an Egyptian",
-    "artist": "The Bangles",
-    "year": 1986,
-    "description": "Fun, quirky pop-rock smash hit with an infectious tempo and great sing-along capability.",
-    "votes": 0
-  },
-  {
-    "id": "18",
-    "title": "Girls Just Want to Have Fun",
-    "artist": "Cyndi Lauper",
-    "year": 1983,
-    "description": "The quintessential energetic 80s girl-power party anthem.",
-    "votes": 0
-  },
-  {
-    "id": "19",
-    "title": "Our Lips Are Sealed",
-    "artist": "The Go-Go's",
-    "year": 1981,
-    "description": "Upbeat, catchy new wave pop-rock classic that captures the early 80s vibe perfectly.",
-    "votes": 0
-  },
-  {
-    "id": "20",
-    "title": "The Safety Dance",
-    "artist": "Men Without Hats",
-    "year": 1982,
-    "description": "Charming, high-energy synth-pop track that's guaranteed to get people dancing.",
-    "votes": 0
-  },
-  {
-    "id": "21",
-    "title": "Let's Dance",
-    "artist": "David Bowie",
-    "year": 1983,
-    "description": "Bowie's huge, Nile Rodgers-produced post-disco dance masterpiece.",
-    "votes": 0
-  },
-  {
-    "id": "22",
-    "title": "My Prerogative",
-    "artist": "Bobby Brown",
-    "year": 1988,
-    "description": "A powerful New Jack Swing anthem with a heavy beat and defiant, energetic vocals.",
-    "votes": 0
-  },
-  {
-    "id": "23",
-    "title": "Footloose",
-    "artist": "Kenny Loggins",
-    "year": 1984,
-    "description": "The ultimate movie soundtrack dance anthem that gets everyone on their feet instantly.",
-    "votes": 0
-  },
-  {
-    "id": "24",
-    "title": "Venus",
-    "artist": "Bananarama",
-    "year": 1986,
-    "description": "A high-energy, fast-paced synth-pop cover that went straight to number one.",
-    "votes": 0
-  },
-  {
-    "id": "25",
-    "title": "Wake Me Up Before You Go-Go",
-    "artist": "Wham!",
-    "year": 1984,
-    "description": "An incredibly energetic, upbeat pop anthem with a vibrant retro soul vibe.",
-    "votes": 0
-  },
-  {
-    "id": "26",
-    "title": "Gloria",
-    "artist": "Laura Branigan",
-    "year": 1982,
-    "description": "A driving, high-tempo pop-rock epic with soaring vocals and incredible drive.",
-    "votes": 0
-  },
-  {
-    "id": "27",
-    "title": "We Got the Beat",
-    "artist": "The Go-Go's",
-    "year": 1981,
-    "description": "Fast-paced, energetic punk-pop anthem that is a staple of early 80s party playlists.",
-    "votes": 0
-  },
-  {
-    "id": "28",
-    "title": "Funky Cold Medina",
-    "artist": "Tone Lōc",
-    "year": 1989,
-    "description": "Classic party rap with a heavy rock sample and humorous lyrics.",
-    "votes": 0
-  },
-  {
-    "id": "29",
-    "title": "Mickey",
-    "artist": "Toni Basil",
-    "year": 1981,
-    "description": "The ultimate cheerleading-style high-energy pop chant that is impossible to ignore.",
-    "votes": 0
-  },
-  {
-    "id": "30",
-    "title": "Rumors",
-    "artist": "Timex Social Club",
-    "year": 1986,
-    "description": "A seminal mid-80s R&B/freestyle dance track with a very catchy rhythm.",
-    "votes": 0
-  },
-  {
-    "id": "31",
-    "title": "Express Yourself",
-    "artist": "Madonna",
-    "year": 1989,
-    "description": "A powerful, energetic dance-pop track with a strong message and a great brass-driven groove.",
-    "votes": 0
-  },
-  {
-    "id": "32",
-    "title": "Hot Hot Hot",
-    "artist": "Buster Poindexter",
-    "year": 1987,
-    "description": "A raucous, horn-filled party song that is the quintessential festive conga-line starter.",
-    "votes": 0
-  },
-  {
-    "id": "33",
-    "title": "Dancing in the Dark",
-    "artist": "Bruce Springsteen",
-    "year": 1984,
-    "description": "Springsteen's biggest synth-rock hit with an upbeat tempo and a classic 80s drum beat.",
-    "votes": 0
-  },
-  {
-    "id": "34",
-    "title": "99 Red Balloons",
-    "artist": "Nena",
-    "year": 1983,
-    "description": "The iconic, high-energy German-turned-global new wave hit that everyone knows.",
-    "votes": 0
-  },
-  {
-    "id": "35",
-    "title": "Come On Eileen",
-    "artist": "Dexys Midnight Runners",
-    "year": 1982,
-    "description": "Unstoppable celtic-pop-rock sing-along party classic with a legendary tempo increase.",
-    "votes": 0
-  },
-  {
-    "id": "36",
-    "title": "You Spin Me Round (Like a Record)",
-    "artist": "Dead or Alive",
-    "year": 1984,
-    "description": "Pure, high-octane Hi-NRG dance floor dynamite with a massive electronic drive.",
-    "votes": 0
-  },
-  {
-    "id": "37",
-    "title": "Black Cars",
-    "artist": "Gino Vannelli",
-    "year": 1985,
-    "description": "Sleek, synth-heavy Canadian pop-rock track with a very cool mid-80s groove.",
-    "votes": 0
-  },
-  {
-    "id": "38",
-    "title": "Doesn't Really Matter",
-    "artist": "Platinum Blonde",
-    "year": 1985,
-    "description": "A massive, uptempo Canadian new-wave/pop-rock hit with a very catchy synth hook and energetic beat.",
-    "votes": 0
-  },
-  {
-    "id": "39",
-    "title": "The Sun Always Shines on T.V.",
-    "artist": "a-ha",
-    "year": 1985,
-    "description": "A dramatic, soaring synth-pop masterpiece with a massive, high-energy beat.",
-    "votes": 0
-  },
-  {
-    "id": "40",
-    "title": "Beat It",
-    "artist": "Michael Jackson",
-    "year": 1982,
-    "description": "The legendary high-energy dance-rock crossover with Eddie Van Halen's iconic guitar solo.",
-    "votes": 0
-  },
-  {
-    "id": "41",
-    "title": "We Don't Have to Take Our Clothes Off",
-    "artist": "Jermaine Stewart",
-    "year": 1986,
-    "description": "An incredibly infectious, upbeat dance-pop anthem that is a quintessential 80s party tune.",
-    "votes": 0
-  },
-  {
-    "id": "42",
-    "title": "Let's Talk About Sex",
-    "artist": "Salt-N-Pepa",
-    "year": 1990,
-    "description": "Playful, catchy hip-hop track with a massive groove that gets the room talking and moving.",
-    "votes": 0
-  },
-  {
-    "id": "43",
-    "title": "Faith",
-    "artist": "George Michael",
-    "year": 1987,
-    "description": "An iconic, bopping pop-rock classic with that unmistakable organ intro and acoustic guitar groove.",
-    "votes": 0
-  },
-  {
-    "id": "44",
-    "title": "The Reflex",
-    "artist": "Duran Duran",
-    "year": 1984,
-    "description": "A huge, high-energy new-wave synth-pop chart-topper with an incredibly catchy rhythm and vocal hooks.",
-    "votes": 0
-  }
-]
+{
+  "playlist": [
+    {
+      "id": "1",
+      "title": "I Can't Wait",
+      "artist": "Nu Shooz",
+      "year": 1986,
+      "description": "Signature synth bassline, super danceable, and still feels incredibly fresh.",
+      "votes": 0
+    },
+    {
+      "id": "2",
+      "title": "Word Up!",
+      "artist": "Cameo",
+      "year": 1986,
+      "description": "An absolute funk-rock masterpiece with massive attitude that gets everyone moving.",
+      "votes": 0
+    },
+    {
+      "id": "3",
+      "title": "Burning Down the House",
+      "artist": "Talking Heads",
+      "year": 1983,
+      "description": "Art-school funk that brings high energy without being a standard radio cliché.",
+      "votes": 0
+    },
+    {
+      "id": "4",
+      "title": "Bizarre Love Triangle",
+      "artist": "New Order",
+      "year": 1986,
+      "description": "Outstanding, emotional synth-pop dance floor filler.",
+      "votes": 0
+    },
+    {
+      "id": "5",
+      "title": "Opportunities (Let's Make Lots of Money)",
+      "artist": "Pet Shop Boys",
+      "year": 1986,
+      "description": "Uptempo and sarcastic synth-pop classic that serves as a fantastic party track.",
+      "votes": 0
+    },
+    {
+      "id": "6",
+      "title": "Our House",
+      "artist": "Madness",
+      "year": 1982,
+      "description": "Incredibly catchy, upbeat, and nostalgic ska-pop classic that always gets the crowd singing along.",
+      "votes": 0
+    },
+    {
+      "id": "7",
+      "title": "Don't You Want Me?",
+      "artist": "The Human League",
+      "year": 1981,
+      "description": "A classic synth-pop anthem with a dramatic duet structure and a heavy, infectious beat.",
+      "votes": 0
+    },
+    {
+      "id": "8",
+      "title": "Tainted Love",
+      "artist": "Soft Cell",
+      "year": 1981,
+      "description": "Minimalist yet highly energetic synth-pop masterpiece that everyone knows and sings along to.",
+      "votes": 0
+    },
+    {
+      "id": "9",
+      "title": "Super Freak",
+      "artist": "Rick James",
+      "year": 1981,
+      "description": "The ultimate high-energy funk-disco banger with one of the most famous basslines in music history.",
+      "votes": 0
+    },
+    {
+      "id": "10",
+      "title": "Celebration",
+      "artist": "Kool & The Gang",
+      "year": 1980,
+      "description": "The universal, timeless anthem for happy occasions and party dance floors.",
+      "votes": 0
+    },
+    {
+      "id": "11",
+      "title": "1999",
+      "artist": "Prince",
+      "year": 1982,
+      "description": "Apocalyptic party funk that defined the early 80s dance sound.",
+      "votes": 0
+    },
+    {
+      "id": "12",
+      "title": "Push It",
+      "artist": "Salt-N-Pepa",
+      "year": 1986,
+      "description": "A pioneering hip-hop/dance crossover with an irresistible, energetic rhythm.",
+      "votes": 0
+    },
+    {
+      "id": "13",
+      "title": "Holiday",
+      "artist": "Madonna",
+      "year": 1983,
+      "description": "A bright, sunny, and incredibly catchy dance-pop anthem that started Madonna's rise.",
+      "votes": 0
+    },
+    {
+      "id": "14",
+      "title": "Wild Thing",
+      "artist": "Tone Lōc",
+      "year": 1988,
+      "description": "Classic late-80s hip-hop track featuring the recognizable Van Halen 'Jamie's Cryin' guitar hook.",
+      "votes": 0
+    },
+    {
+      "id": "15",
+      "title": "Pump Up the Jam",
+      "artist": "Technotronic",
+      "year": 1989,
+      "description": "A high-octane hip-house anthem that bridges the late 80s dance club transition.",
+      "votes": 0
+    },
+    {
+      "id": "16",
+      "title": "Blue Monday",
+      "artist": "New Order",
+      "year": 1983,
+      "description": "The best-selling 12-inch single of all time, presenting an iconic, driving electronic beat.",
+      "votes": 0
+    },
+    {
+      "id": "17",
+      "title": "Walk Like an Egyptian",
+      "artist": "The Bangles",
+      "year": 1986,
+      "description": "Fun, quirky pop-rock smash hit with an infectious tempo and great sing-along capability.",
+      "votes": 0
+    },
+    {
+      "id": "18",
+      "title": "Girls Just Want to Have Fun",
+      "artist": "Cyndi Lauper",
+      "year": 1983,
+      "description": "The quintessential energetic 80s girl-power party anthem.",
+      "votes": 0
+    },
+    {
+      "id": "19",
+      "title": "Our Lips Are Sealed",
+      "artist": "The Go-Go's",
+      "year": 1981,
+      "description": "Upbeat, catchy new wave pop-rock classic that captures the early 80s vibe perfectly.",
+      "votes": 0
+    },
+    {
+      "id": "20",
+      "title": "The Safety Dance",
+      "artist": "Men Without Hats",
+      "year": 1982,
+      "description": "Charming, high-energy synth-pop track that's guaranteed to get people dancing.",
+      "votes": 0
+    },
+    {
+      "id": "21",
+      "title": "Let's Dance",
+      "artist": "David Bowie",
+      "year": 1983,
+      "description": "Bowie's huge, Nile Rodgers-produced post-disco dance masterpiece.",
+      "votes": 0
+    },
+    {
+      "id": "22",
+      "title": "My Prerogative",
+      "artist": "Bobby Brown",
+      "year": 1988,
+      "description": "A powerful New Jack Swing anthem with a heavy beat and defiant, energetic vocals.",
+      "votes": 0
+    },
+    {
+      "id": "23",
+      "title": "Footloose",
+      "artist": "Kenny Loggins",
+      "year": 1984,
+      "description": "The ultimate movie soundtrack dance anthem that gets everyone on their feet instantly.",
+      "votes": 0
+    },
+    {
+      "id": "24",
+      "title": "Venus",
+      "artist": "Bananarama",
+      "year": 1986,
+      "description": "A high-energy, fast-paced synth-pop cover that went straight to number one.",
+      "votes": 0
+    },
+    {
+      "id": "25",
+      "title": "Wake Me Up Before You Go-Go",
+      "artist": "Wham!",
+      "year": 1984,
+      "description": "An incredibly energetic, upbeat pop anthem with a vibrant retro soul vibe.",
+      "votes": 0
+    },
+    {
+      "id": "26",
+      "title": "Gloria",
+      "artist": "Laura Branigan",
+      "year": 1982,
+      "description": "A driving, high-tempo pop-rock epic with soaring vocals and incredible drive.",
+      "votes": 0
+    },
+    {
+      "id": "27",
+      "title": "We Got the Beat",
+      "artist": "The Go-Go's",
+      "year": 1981,
+      "description": "Fast-paced, energetic punk-pop anthem that is a staple of early 80s party playlists.",
+      "votes": 0
+    },
+    {
+      "id": "28",
+      "title": "Funky Cold Medina",
+      "artist": "Tone Lōc",
+      "year": 1989,
+      "description": "Classic party rap with a heavy rock sample and humorous lyrics.",
+      "votes": 0
+    },
+    {
+      "id": "29",
+      "title": "Mickey",
+      "artist": "Toni Basil",
+      "year": 1981,
+      "description": "The ultimate cheerleading-style high-energy pop chant that is impossible to ignore.",
+      "votes": 0
+    },
+    {
+      "id": "30",
+      "title": "Rumors",
+      "artist": "Timex Social Club",
+      "year": 1986,
+      "description": "A seminal mid-80s R&B/freestyle dance track with a very catchy rhythm.",
+      "votes": 0
+    },
+    {
+      "id": "31",
+      "title": "Express Yourself",
+      "artist": "Madonna",
+      "year": 1989,
+      "description": "A powerful, energetic dance-pop track with a strong message and a great brass-driven groove.",
+      "votes": 0
+    },
+    {
+      "id": "32",
+      "title": "Hot Hot Hot",
+      "artist": "Buster Poindexter",
+      "year": 1987,
+      "description": "A raucous, horn-filled party song that is the quintessential festive conga-line starter.",
+      "votes": 0
+    },
+    {
+      "id": "33",
+      "title": "Dancing in the Dark",
+      "artist": "Bruce Springsteen",
+      "year": 1984,
+      "description": "Springsteen's biggest synth-rock hit with an upbeat tempo and a classic 80s drum beat.",
+      "votes": 0
+    },
+    {
+      "id": "34",
+      "title": "99 Red Balloons",
+      "artist": "Nena",
+      "year": 1983,
+      "description": "The iconic, high-energy German-turned-global new wave hit that everyone knows.",
+      "votes": 0
+    },
+    {
+      "id": "35",
+      "title": "Come On Eileen",
+      "artist": "Dexys Midnight Runners",
+      "year": 1982,
+      "description": "Unstoppable celtic-pop-rock sing-along party classic with a legendary tempo increase.",
+      "votes": 0
+    },
+    {
+      "id": "36",
+      "title": "You Spin Me Round (Like a Record)",
+      "artist": "Dead or Alive",
+      "year": 1984,
+      "description": "Pure, high-octane Hi-NRG dance floor dynamite with a massive electronic drive.",
+      "votes": 0
+    },
+    {
+      "id": "37",
+      "title": "Black Cars",
+      "artist": "Gino Vannelli",
+      "year": 1985,
+      "description": "Sleek, synth-heavy Canadian pop-rock track with a very cool mid-80s groove.",
+      "votes": 0
+    },
+    {
+      "id": "38",
+      "title": "Doesn't Really Matter",
+      "artist": "Platinum Blonde",
+      "year": 1985,
+      "description": "A massive, uptempo Canadian new-wave/pop-rock hit with a very catchy synth hook and energetic beat.",
+      "votes": 0
+    },
+    {
+      "id": "39",
+      "title": "The Sun Always Shines on T.V.",
+      "artist": "a-ha",
+      "year": 1985,
+      "description": "A dramatic, soaring synth-pop masterpiece with a massive, high-energy beat.",
+      "votes": 0
+    },
+    {
+      "id": "40",
+      "title": "Beat It",
+      "artist": "Michael Jackson",
+      "year": 1982,
+      "description": "The legendary high-energy dance-rock crossover with Eddie Van Halen's iconic guitar solo.",
+      "votes": 0
+    },
+    {
+      "id": "41",
+      "title": "We Don't Have to Take Our Clothes Off",
+      "artist": "Jermaine Stewart",
+      "year": 1986,
+      "description": "An incredibly infectious, upbeat dance-pop anthem that is a quintessential 80s party tune.",
+      "votes": 0
+    },
+    {
+      "id": "42",
+      "title": "Let's Talk About Sex",
+      "artist": "Salt-N-Pepa",
+      "year": 1990,
+      "description": "Playful, catchy hip-hop track with a massive groove that gets the room talking and moving.",
+      "votes": 0
+    },
+    {
+      "id": "43",
+      "title": "Faith",
+      "artist": "George Michael",
+      "year": 1987,
+      "description": "An iconic, bopping pop-rock classic with that unmistakable organ intro and acoustic guitar groove.",
+      "votes": 0
+    },
+    {
+      "id": "44",
+      "title": "The Reflex",
+      "artist": "Duran Duran",
+      "year": 1984,
+      "description": "A huge, high-energy new-wave synth-pop chart-topper with an incredibly catchy rhythm and vocal hooks.",
+      "votes": 0
+    }
+  ],
+  "images": [
+    "danceimages/penhorn_mall.png"
+  ]
+}

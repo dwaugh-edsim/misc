@@ -12,7 +12,7 @@
  * 8. Deploy, authorize permissions, and copy the Web App URL for your frontend index.html!
  */
 
-// Initialize sheets and populate with the default 43-song playlist if empty
+// Initialize sheets and populate with the default 44-song playlist if empty
 function setupDatabase() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   
@@ -30,6 +30,15 @@ function setupDatabase() {
     suggestionsSheet = ss.insertSheet("Suggestions");
     suggestionsSheet.appendRow(["Timestamp", "Title", "Artist", "Year", "Comment"]);
     suggestionsSheet.getRange("A1:E1").setFontWeight("bold").setBackground("#e2e8f0");
+  }
+
+  // 3. Setup Collage Images Sheet
+  let imagesSheet = ss.getSheetByName("CollageImages");
+  if (!imagesSheet) {
+    imagesSheet = ss.insertSheet("CollageImages");
+    imagesSheet.appendRow(["ImagePath"]);
+    imagesSheet.getRange("A1").setFontWeight("bold").setBackground("#e2e8f0");
+    imagesSheet.appendRow(["danceimages/penhorn_mall.png"]);
   }
 
   // Populate default playlist if it only contains the header
@@ -90,28 +99,38 @@ function jsonResponse(data) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-// GET Endpoint: Return current playlist and votes
+// GET Endpoint: Return current playlist, votes, and collage images
 function doGet(e) {
   try {
     setupDatabase(); // Ensure DB is initialized
     const ss = SpreadsheetApp.getActiveSpreadsheet();
-    const sheet = ss.getSheetByName("MasterPlaylist");
-    const data = sheet.getDataRange().getValues();
     
+    // Fetch Playlist
+    const playlistSheet = ss.getSheetByName("MasterPlaylist");
+    const playlistData = playlistSheet.getDataRange().getValues();
     const playlist = [];
-    // Skip header row
-    for (let i = 1; i < data.length; i++) {
+    for (let i = 1; i < playlistData.length; i++) {
       playlist.push({
-        id: String(data[i][0]),
-        title: String(data[i][1]),
-        artist: String(data[i][2]),
-        year: Number(data[i][3]),
-        description: String(data[i][4]),
-        votes: Number(data[i][5] || 0)
+        id: String(playlistData[i][0]),
+        title: String(playlistData[i][1]),
+        artist: String(playlistData[i][2]),
+        year: Number(playlistData[i][3]),
+        description: String(playlistData[i][4]),
+        votes: Number(playlistData[i][5] || 0)
       });
     }
+
+    // Fetch Images
+    const imagesSheet = ss.getSheetByName("CollageImages");
+    const imagesData = imagesSheet.getDataRange().getValues();
+    const images = [];
+    for (let i = 1; i < imagesData.length; i++) {
+      if (imagesData[i][0]) {
+        images.push(String(imagesData[i][0]));
+      }
+    }
     
-    return jsonResponse({ status: "success", playlist: playlist });
+    return jsonResponse({ status: "success", playlist: playlist, images: images });
   } catch (err) {
     return jsonResponse({ status: "error", message: err.toString() });
   }

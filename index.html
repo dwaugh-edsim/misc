@@ -151,6 +151,50 @@
       box-shadow: inset 0 0 15px rgba(139, 92, 246, 0.1);
     }
 
+    /* Polaroid Collage Section */
+    .collage-section {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    }
+    .collage-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .polaroid {
+      background: #ffffff;
+      padding: 10px 10px 30px 10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      border-radius: 2px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 180px;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    .polaroid img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .polaroid:nth-child(even) {
+      transform: rotate(3deg);
+    }
+    .polaroid:nth-child(odd) {
+      transform: rotate(-3deg);
+    }
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.1);
+      z-index: 10;
+      box-shadow: 0 15px 30px rgba(255,0,127,0.3);
+    }
+
     /* Toolbar: Search, Filter, Stats */
     .toolbar {
       background: var(--bg-card);
@@ -552,6 +596,12 @@
       Help curate the music to keep the dance floor alive between band sets. Upvote your favorite tracks or suggest a brand new banger!
     </div>
 
+    <!-- 80s Polaroid Collage Section -->
+    <div class="collage-section" id="collageSection" style="display: none;">
+      <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.25rem; text-align: center; text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);">💾 Memory Lane Collage</h3>
+      <div class="collage-grid" id="collageGrid"></div>
+    </div>
+
     <!-- Search & Toolbar -->
     <div class="toolbar">
       <div class="search-box">
@@ -653,8 +703,12 @@
       { id: "40", title: "Beat It", artist: "Michael Jackson", year: 1982, description: "The legendary high-energy dance-rock crossover with Eddie Van Halen's iconic guitar solo.", votes: 0 },
       { id: "41", title: "We Don't Have to Take Our Clothes Off", artist: "Jermaine Stewart", year: 1986, description: "An incredibly infectious, upbeat dance-pop anthem that is a quintessential 80s party tune.", votes: 0 },
       { id: "42", title: "Let's Talk About Sex", artist: "Salt-N-Pepa", year: 1990, description: "Playful, catchy hip-hop track with a massive groove that gets the room talking and moving.", votes: 0 },
-      { id: "43", title: "Faith", artist: "George Michael", year: 1987, description: "An iconic, bopping pop-rock classic with that unmistakable organ intro and acoustic guitar groove.", votes: 0 }
+      { id: "43", title: "Faith", artist: "George Michael", year: 1987, description: "An iconic, bopping pop-rock classic with that unmistakable organ intro and acoustic guitar groove.", votes: 0 },
+      { id: "44", title: "The Reflex", artist: "Duran Duran", year: 1984, description: "A huge, high-energy new-wave synth-pop chart-topper with an incredibly catchy rhythm and vocal hooks.", votes: 0 }
     ];
+
+    // Local fallback collage images
+    let collageImages = ["danceimages/penhorn_mall.png"];
 
     // Local storage voting map: { "songId": "up" | "down" }
     let votesMap = JSON.parse(localStorage.getItem("votesMap")) || {};
@@ -669,10 +723,11 @@
       else overlay.classList.remove("show");
     }
 
-    // Fetch playlist from Apps Script
+    // Fetch playlist and collage from Apps Script
     function fetchPlaylist() {
       if (!APPS_SCRIPT_URL) {
         sortAndRender();
+        renderCollage(collageImages);
         return;
       }
 
@@ -680,18 +735,22 @@
       fetch(APPS_SCRIPT_URL)
         .then(response => response.json())
         .then(data => {
-          if (data.status === "success" && data.playlist) {
-            playlist = data.playlist;
+          if (data.status === "success") {
+            if (data.playlist) playlist = data.playlist;
+            if (data.images) collageImages = data.images;
             sortAndRender();
+            renderCollage(collageImages);
           } else {
             showToast("Server error. Using local playlist fallback.", "error", "fa-triangle-exclamation");
             sortAndRender();
+            renderCollage(collageImages);
           }
         })
         .catch(err => {
           console.error("Fetch Error:", err);
           showToast("Network failed. Using local database fallback.", "error", "fa-wifi");
           sortAndRender();
+          renderCollage(collageImages);
         })
         .finally(() => {
           toggleLoading(false);
@@ -741,6 +800,31 @@
       });
       
       updateStats(playlist.length);
+    }
+
+    function renderCollage(imagesList) {
+      const section = document.getElementById("collageSection");
+      const grid = document.getElementById("collageGrid");
+      
+      if (!imagesList || imagesList.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+      
+      grid.innerHTML = "";
+      imagesList.forEach(imgUrl => {
+        const polaroid = document.createElement("div");
+        polaroid.className = "polaroid";
+        
+        // Random slight rotations for retro sticker look
+        const randomRot = (Math.random() * 8 - 4).toFixed(1);
+        polaroid.style.transform = `rotate(${randomRot}deg)`;
+        
+        polaroid.innerHTML = `<img src="${imgUrl}" alt="80s Memory" onerror="this.parentElement.style.display='none'">`;
+        grid.appendChild(polaroid);
+      });
+      
+      section.style.display = "block";
     }
 
     function updateStats(count) {
