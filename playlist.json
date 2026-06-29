@@ -344,6 +344,22 @@
       "year": 1984,
       "description": "A huge, high-energy new-wave synth-pop chart-topper with an incredibly catchy rhythm and vocal hooks.",
       "votes": 0
+    },
+    {
+      "id": "45",
+      "title": "Careless Whisper",
+      "artist": "George Michael",
+      "year": 1984,
+      "description": "One of the most famous saxophone intros in history and a defining 80s slow-dance classic.",
+      "votes": 0
+    },
+    {
+      "id": "46",
+      "title": "Time After Time",
+      "artist": "Cyndi Lauper",
+      "year": 1983,
+      "description": "A beautifully emotional pop masterpiece that is one of the greatest love songs ever written.",
+      "votes": 0
     }
   ],
   "images": [
