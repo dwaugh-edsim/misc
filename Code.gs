@@ -32,7 +32,15 @@ function setupDatabase() {
     suggestionsSheet.getRange("A1:E1").setFontWeight("bold").setBackground("#e2e8f0");
   }
 
-  // 3. Setup Collage Images Sheet
+  // 3. Setup Vote Log Sheet (tracks per-user votes)
+  let voteLogSheet = ss.getSheetByName("VoteLog");
+  if (!voteLogSheet) {
+    voteLogSheet = ss.insertSheet("VoteLog");
+    voteLogSheet.appendRow(["UserID", "SongID", "VoteType"]);
+    voteLogSheet.getRange("A1:C1").setFontWeight("bold").setBackground("#e2e8f0");
+  }
+
+  // 4. Setup Collage Images Sheet
   let imagesSheet = ss.getSheetByName("CollageImages");
   if (!imagesSheet) {
     imagesSheet = ss.insertSheet("CollageImages");
@@ -109,11 +117,12 @@ function jsonResponse(data) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-// GET Endpoint: Return current playlist, votes, and collage images
+// GET Endpoint: Return current playlist, votes, collage images, and user's vote map
 function doGet(e) {
   try {
     setupDatabase(); // Ensure DB is initialized
     const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const userId = e.parameter.userId || null;
     
     // Fetch Playlist
     const playlistSheet = ss.getSheetByName("MasterPlaylist");
@@ -139,8 +148,20 @@ function doGet(e) {
         images.push(String(imagesData[i][0]));
       }
     }
+
+    // Fetch user's existing votes from VoteLog
+    let userVotes = {};
+    if (userId) {
+      const voteLogSheet = ss.getSheetByName("VoteLog");
+      const voteLogData = voteLogSheet.getDataRange().getValues();
+      for (let i = 1; i < voteLogData.length; i++) {
+        if (String(voteLogData[i][0]) === userId) {
+          userVotes[String(voteLogData[i][1])] = String(voteLogData[i][2]);
+        }
+      }
+    }
     
-    return jsonResponse({ status: "success", playlist: playlist, images: images });
+    return jsonResponse({ status: "success", playlist: playlist, images: images, userVotes: userVotes });
   } catch (err) {
     return jsonResponse({ status: "error", message: err.toString() });
   }
@@ -160,28 +181,84 @@ function doPost(e) {
     if (action === "vote") {
       const songId = String(postData.id);
       const voteType = postData.type; // "up" or "down"
-      const delta = voteType === "up" ? 1 : -1;
+      const userId = String(postData.userId || "");
       
-      const sheet = ss.getSheetByName("MasterPlaylist");
-      const data = sheet.getDataRange().getValues();
-      let found = false;
-      let newVotes = 0;
+      if (!userId) {
+        return jsonResponse({ status: "error", message: "userId is required." });
+      }
       
-      for (let i = 1; i < data.length; i++) {
-        if (String(data[i][0]) === songId) {
-          const voteCell = sheet.getRange(i + 1, 6);
-          newVotes = Number(data[i][5] || 0) + delta;
-          voteCell.setValue(newVotes);
-          found = true;
-          break;
+      // Use lock to prevent race conditions
+      const lock = LockService.getScriptLock();
+      lock.waitLock(10000);
+      
+      try {
+        // Check existing vote in VoteLog
+        const voteLogSheet = ss.getSheetByName("VoteLog");
+        const voteLogData = voteLogSheet.getDataRange().getValues();
+        let existingRowIndex = -1;
+        let existingVoteType = null;
+        
+        for (let i = 1; i < voteLogData.length; i++) {
+          if (String(voteLogData[i][0]) === userId && String(voteLogData[i][1]) === songId) {
+            existingRowIndex = i + 1; // 1-indexed for sheet
+            existingVoteType = String(voteLogData[i][2]);
+            break;
+          }
         }
+        
+        let delta = 0;
+        let newUserVote = null;
+        
+        if (existingVoteType === voteType) {
+          // Same vote → toggle off (remove)
+          voteLogSheet.deleteRow(existingRowIndex);
+          delta = voteType === "up" ? -1 : 1;
+          newUserVote = null;
+        } else if (existingVoteType !== null) {
+          // Opposite vote → flip
+          voteLogSheet.getRange(existingRowIndex, 3).setValue(voteType);
+          delta = voteType === "up" ? 2 : -2;
+          newUserVote = voteType;
+        } else {
+          // New vote
+          voteLogSheet.appendRow([userId, songId, voteType]);
+          delta = voteType === "up" ? 1 : -1;
+          newUserVote = voteType;
+        }
+        
+        // Update MasterPlaylist vote count
+        const playlistSheet = ss.getSheetByName("MasterPlaylist");
+        const playlistData = playlistSheet.getDataRange().getValues();
+        let found = false;
+        let newVotes = 0;
+        
+        for (let i = 1; i < playlistData.length; i++) {
+          if (String(playlistData[i][0]) === songId) {
+            const voteCell = playlistSheet.getRange(i + 1, 6);
+            newVotes = Number(playlistData[i][5] || 0) + delta;
+            voteCell.setValue(newVotes);
+            found = true;
+            break;
+          }
+        }
+        
+        if (!found) {
+          return jsonResponse({ status: "error", message: "Song ID not found." });
+        }
+        
+        // Build full userVotes map to return
+        const updatedVoteLog = voteLogSheet.getDataRange().getValues();
+        const userVotes = {};
+        for (let i = 1; i < updatedVoteLog.length; i++) {
+          if (String(updatedVoteLog[i][0]) === userId) {
+            userVotes[String(updatedVoteLog[i][1])] = String(updatedVoteLog[i][2]);
+          }
+        }
+        
+        return jsonResponse({ status: "success", id: songId, votes: newVotes, userVote: newUserVote, userVotes: userVotes });
+      } finally {
+        lock.releaseLock();
       }
-      
-      if (!found) {
-        return jsonResponse({ status: "error", message: "Song ID not found." });
-      }
-      
-      return jsonResponse({ status: "success", id: songId, votes: newVotes });
       
     } else if (action === "suggest") {
       const title = postData.title;
