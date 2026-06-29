@@ -342,5 +342,13 @@
     "year": 1987,
     "description": "An iconic, bopping pop-rock classic with that unmistakable organ intro and acoustic guitar groove.",
     "votes": 0
+  },
+  {
+    "id": "44",
+    "title": "The Reflex",
+    "artist": "Duran Duran",
+    "year": 1984,
+    "description": "A huge, high-energy new-wave synth-pop chart-topper with an incredibly catchy rhythm and vocal hooks.",
+    "votes": 0
   }
 ]

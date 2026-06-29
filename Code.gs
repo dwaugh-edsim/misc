@@ -77,7 +77,8 @@ function setupDatabase() {
       ["40", "Beat It", "Michael Jackson", 1982, "The legendary high-energy dance-rock crossover with Eddie Van Halen's iconic guitar solo.", 0],
       ["41", "We Don't Have to Take Our Clothes Off", "Jermaine Stewart", 1986, "An incredibly infectious, upbeat dance-pop anthem that is a quintessential 80s party tune.", 0],
       ["42", "Let's Talk About Sex", "Salt-N-Pepa", 1990, "Playful, catchy hip-hop track with a massive groove that gets the room talking and moving.", 0],
-      ["43", "Faith", "George Michael", 1987, "An iconic, bopping pop-rock classic with that unmistakable organ intro and acoustic guitar groove.", 0]
+      ["43", "Faith", "George Michael", 1987, "An iconic, bopping pop-rock classic with that unmistakable organ intro and acoustic guitar groove.", 0],
+      ["44", "The Reflex", "Duran Duran", 1984, "A huge, high-energy new-wave synth-pop chart-topper with an incredibly catchy rhythm and vocal hooks.", 0]
     ];
     playlistSheet.getRange(2, 1, defaultSongs.length, 6).setValues(defaultSongs);
   }
