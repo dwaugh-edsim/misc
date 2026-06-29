@@ -38,7 +38,17 @@ function setupDatabase() {
     imagesSheet = ss.insertSheet("CollageImages");
     imagesSheet.appendRow(["ImagePath"]);
     imagesSheet.getRange("A1").setFontWeight("bold").setBackground("#e2e8f0");
-    imagesSheet.appendRow(["danceimages/penhorn_mall.png"]);
+    const defaultImages = [
+      ["danceimages/6be077_93f55a97b2e34f7693f533920bae6728~mv2.avif"],
+      ["danceimages/80s-clothing-trends.jpg"],
+      ["danceimages/D77JP2QFOBPZPN7Y54H6OZLNA4.avif"],
+      ["danceimages/alfredos-1.jpg"],
+      ["danceimages/images (1).jpg"],
+      ["danceimages/images.jpg"],
+      ["danceimages/p02w93jg.jpg"],
+      ["danceimages/penhorn_mall.png"]
+    ];
+    imagesSheet.getRange(2, 1, defaultImages.length, 1).setValues(defaultImages);
   }
 
   // Populate default playlist if it only contains the header
